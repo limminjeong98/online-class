@@ -1,0 +1,30 @@
+### Add Rating to Course
+POST http://{{host}}/courses/{{course-id}}/ratings
+Content-Type: application/json
+
+{
+  "rating": 5,
+  "comment": "Excellent course!",
+  "userId": 1
+}
+
+> {%
+    client.global.set("course-rating-id", response.body["id"]);
+    client.log("course-rating-id = " + client.global.get("course-rating-id"));
+%}
+
+### Update Rating
+PUT http://{{host}}/courses/{{course-id}}/ratings/{{course-rating-id}}
+Content-Type: application/json
+
+{
+  "rating": 4,
+  "comment": "Very good course, but a bit hard.",
+  "userId": 1
+}
+
+### Delete Rating
+DELETE http://{{host}}/courses/{{course-id}}/ratings/{{course-rating-id}}
+
+### Get All Ratings for a Course
+GET http://{{host}}/courses/{{course-id}}/ratings

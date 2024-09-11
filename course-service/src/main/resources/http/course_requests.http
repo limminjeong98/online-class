@@ -1,0 +1,33 @@
+### Create Course
+POST http://{{host}}/courses
+Content-Type: application/json
+
+{
+  "title": "Introduction to Java",
+  "description": "A comprehensive course on Java programming",
+  "instructorId": 1,
+  "createdAt": "2024-05-10T15:00:00Z"
+}
+
+> {%
+    client.global.set("course-id", response.body["id"]);
+    client.log("course-id = " + client.global.get("course-id"));
+%}
+
+
+### Update Course
+PUT http://{{host}}/courses/{{course-id}}
+Content-Type: application/json
+
+{
+  "title": "Advanced Java Concepts",
+  "description": "Deep dive into advanced Java topics",
+  "instructorId": 1,
+  "createdAt": "2024-05-10T15:00:00Z"
+}
+
+### Get Course by ID
+GET http://{{host}}/courses/{{course-id}}
+
+### Get All Courses
+GET http://{{host}}/courses

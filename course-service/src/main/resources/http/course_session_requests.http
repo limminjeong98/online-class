@@ -1,0 +1,26 @@
+### Add Session to Course
+POST http://{{host}}/courses/{{course-id}}/sessions
+Content-Type: application/json
+
+{
+  "title": "Introduction to Java"
+}
+
+> {%
+    client.global.set("course-session-id", response.body["id"]);
+    client.log("course-session-id = " + client.global.get("course-session-id"));
+%}
+
+### Update Session
+PUT http://{{host}}/courses/{{course-id}}/sessions/{{course-session-id}}
+Content-Type: application/json
+
+{
+  "title": "Advanced Java"
+}
+
+### Get Session by ID
+GET http://{{host}}/courses/{{course-id}}/sessions/{{course-session-id}}
+
+### Get All Sessions by Course ID
+GET http://{{host}}/courses/{{course-id}}/sessions
