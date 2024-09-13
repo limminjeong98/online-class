@@ -1,0 +1,44 @@
+package com.example.filemanagementservice.domain.entity;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+
+@Data
+@NoArgsConstructor
+@Table(name = "session_files")
+@Entity
+public class SessionFile {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "file_id")
+    private Long fileId;
+
+    @Column(name = "session_id", nullable = false)
+    private Long sessionId;
+
+    @Column(name = "file_name", nullable = false)
+    private String fileName;
+
+    @Column(name = "file_type", nullable = false, length = 50)
+    private String fileType;
+
+    @Column(name = "file_path", nullable = false)
+    private String filePath;
+
+    @Column(name = "created_at", nullable = false, columnDefinition = "TIMESTAMP")
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+    @Column(name = "updated_at", nullable = false, columnDefinition = "TIMESTAMP")
+    private LocalDateTime updatedAt = LocalDateTime.now();
+
+    public SessionFile(Long sessionId, String fileName, String fileType, String filePath) {
+        this.sessionId = sessionId;
+        this.fileName = fileName;
+        this.fileType = fileType;
+        this.filePath = filePath;
+    }
+}
