@@ -1,0 +1,8 @@
+### Request Full Video File
+GET http://{{host}}/sessions/1000/streams
+Accept: */*
+
+### Request Partial Video File (Range Request)
+GET http://{{host}}/sessions/100/streams
+Range: bytes=0-2186186
+Accept: */*
