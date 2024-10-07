@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package com.example.classplaybackservice.domain.service;
+
+service PlaybackService {
+  rpc StartRecord(StartRecordRequest) returns (StartRecordResponse);
+  rpc EndRecord(EndRecordRequest) returns (EndRecordResponse);
+  rpc LogEvent(LogEventRequest) returns (LogEventResponse);
+}
+
+message PlaybackRecord {
+  int64 record_id = 1;
+  int64 user_id = 2;
+  int64 file_id = 3;
+  int64 start_time = 4;
+  int64 end_time = 5;
+}
+
+message EventLog {
+  int64 event_id = 1;
+  int64 record_id = 2;
+  int64 user_id = 3;
+  string event_type = 4;
+  int64 timestamp = 5;
+}
+
+message StartRecordRequest {
+  int64 user_id = 1;
+  int64 file_id = 2;
+}
+
+message StartRecordResponse {
+  PlaybackRecord record = 1;
+}
+
+message EndRecordRequest {
+  int64 record_id = 1;
+}
+
+message EndRecordResponse {
+  PlaybackRecord record = 1;
+}
+
+message LogEventRequest {
+  EventLog event = 1;
+}
+
+message LogEventResponse {
+  EventLog event = 1;
+}
