@@ -1,0 +1,134 @@
+syntax = "proto3";
+
+package com.example.enrollmentservice.domain.service;
+
+service EnrollmentService {
+  rpc RegisterCourse(CourseRegistrationRequest) returns (CourseRegistrationResponse);
+  rpc ManageSubscription(SubscriptionRequest) returns (SubscriptionResponse);
+  rpc RenewSubscription(RenewSubscriptionRequest) returns (SubscriptionResponse);
+  rpc CheckCourseAccess(CourseAccessRequest) returns (CourseAccessResponse);
+  rpc CheckSubscriptionAccess(SubscriptionAccessRequest) returns (SubscriptionAccessResponse);
+  rpc GetUserEnrollments(UserEnrollmentsRequest) returns (UserEnrollmentsResponse);
+  rpc GetUserPlanSubscriptions(UserSubscriptionsRequest) returns (UserSubscriptionsResponse);
+}
+
+service FakePaymentService {
+  rpc CreatePayment(PaymentRequest) returns (PaymentResponse);
+  rpc ListUserPayments(UserPaymentsRequest) returns (UserPaymentsResponse);
+  rpc GetPaymentsByPaymentId(PaymentsByIdRequest) returns (PaymentsByIdResponse);
+}
+
+message CourseRegistrationRequest {
+  int64 user_id = 1;
+  int64 course_id = 2;
+  int64 payment_id = 3;
+}
+
+message CourseRegistrationResponse {
+  int64 user_id = 1;
+  int64 course_id = 2;
+  int64 registration_date = 3;
+}
+
+message SubscriptionRequest {
+  int64 user_id = 1;
+  int64 start_date = 2;
+  int64 end_date = 3;
+  int64 payment_id = 4;
+}
+
+message RenewSubscriptionRequest {
+  int64 subscription_id = 1;
+  int64 start_date = 2;
+  int64 end_date = 3;
+}
+
+message SubscriptionResponse {
+  Subscription subscription = 1;
+}
+
+message CourseAccessRequest {
+  int64 course_id = 1;
+  int64 user_id = 2;
+}
+
+message CourseAccessResponse {
+  int64 course_id = 1;
+  bool has_access = 2;
+}
+
+message SubscriptionAccessRequest {
+  int64 user_id = 1;
+}
+
+message SubscriptionAccessResponse {
+  int64 subscription_id = 1;
+  bool has_access = 2;
+}
+
+message UserEnrollmentsRequest {
+  int64 user_id = 1;
+}
+
+message UserEnrollmentsResponse {
+  repeated Enrollment enrollments = 1;
+}
+
+message Enrollment {
+  int64 enrollment_id = 1;
+  int64 user_id = 2;
+  int64 course_id = 3;
+  int64 registration_date = 4;
+  string status = 5;
+  int64 payment_id = 6;
+}
+
+message UserSubscriptionsRequest {
+  int64 user_id = 1;
+}
+
+message UserSubscriptionsResponse {
+  repeated Subscription subscriptions = 1;
+}
+
+message Subscription {
+  int64 subscription_id = 1;
+  int64 user_id = 2;
+  int64 start_date = 3;
+  int64 end_date = 4;
+  string status = 5;
+  int64 payment_id = 6;
+}
+
+message PaymentRequest {
+  int64 user_id = 1;
+  string type = 2;
+  double amount = 3;
+  string payment_method = 4;
+}
+
+message PaymentResponse {
+  int64 user_id = 1;
+  string type = 2;
+  double amount = 3;
+  string payment_method = 4;
+  int64 payment_id = 5;
+  int64 payment_date = 6;
+  bool payment_successful = 100;
+}
+
+message UserPaymentsRequest {
+  int64 user_id = 1;
+}
+
+message PaymentsByIdRequest {
+  int64 payment_id = 1;
+}
+
+message PaymentsByIdResponse {
+  PaymentResponse payment = 1;
+}
+
+message UserPaymentsResponse {
+  repeated PaymentResponse payments = 1;
+}
