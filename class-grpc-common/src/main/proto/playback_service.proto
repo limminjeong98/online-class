@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package com.example.classplaybackservice.domain.service;
+package com.example.playbackservice.domain.service;
 
 service PlaybackService {
   rpc StartRecord(StartRecordRequest) returns (StartRecordResponse);

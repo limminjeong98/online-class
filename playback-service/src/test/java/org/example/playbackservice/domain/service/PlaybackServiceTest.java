@@ -1,6 +1,6 @@
 package org.example.playbackservice.domain.service;
 
-import com.example.classplaybackservice.domain.service.PlaybackServiceOuterClass;
+import com.example.playbackservice.domain.service.PlaybackServiceOuterClass;
 import io.grpc.stub.StreamObserver;
 import org.example.playbackservice.domain.entity.EventLog;
 import org.example.playbackservice.domain.entity.PlaybackRecord;

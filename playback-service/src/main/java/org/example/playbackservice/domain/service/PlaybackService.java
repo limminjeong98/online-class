@@ -1,7 +1,7 @@
 package org.example.playbackservice.domain.service;
 
-import com.example.classplaybackservice.domain.service.PlaybackServiceGrpc;
-import com.example.classplaybackservice.domain.service.PlaybackServiceOuterClass;
+import com.example.playbackservice.domain.service.PlaybackServiceGrpc;
+import com.example.playbackservice.domain.service.PlaybackServiceOuterClass;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 import org.example.playbackservice.domain.entity.EventLog;
