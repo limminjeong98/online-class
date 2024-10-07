@@ -12,6 +12,7 @@ import java.time.ZoneId;
 @Table(name = "event_logs")
 public class EventLog {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "event_id", nullable = false)
     private Long eventId;
 

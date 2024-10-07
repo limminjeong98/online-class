@@ -25,7 +25,7 @@ public class PlaybackRecord {
     @Column(name = "start_time", nullable = false, columnDefinition = "TIMESTAMP")
     private LocalDateTime startTime;
 
-    @Column(name = "end_time", nullable = false, columnDefinition = "TIMESTAMP")
+    @Column(name = "end_time", columnDefinition = "TIMESTAMP")
     private LocalDateTime endTime;
 
     public PlaybackServiceOuterClass.PlaybackRecord toProto() {
