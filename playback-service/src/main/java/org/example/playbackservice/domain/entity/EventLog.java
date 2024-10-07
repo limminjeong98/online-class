@@ -1,6 +1,6 @@
 package org.example.playbackservice.domain.entity;
 
-import com.example.classplaybackservice.domain.service.PlaybackServiceOuterClass;
+import com.example.playbackservice.domain.service.PlaybackServiceOuterClass;
 import jakarta.persistence.*;
 import lombok.Data;
 
