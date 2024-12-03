@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 @Service
 public class DummyFileService {
     private final List<CourseSessionFile> files = new ArrayList<>();
-    private final AtomicLong counter = new AtomicLong();
+    private final AtomicLong counter = new AtomicLong(100);
 
     public DummyFileService() {
         initData();
@@ -20,10 +20,10 @@ public class DummyFileService {
 
     private void initData() {
         // Adding some dummy files to the service
-        files.add(new CourseSessionFile(counter.getAndIncrement(), 1L, null, "Introduction to GraphQL.mp4", "mp4", "/files/intro_to_graphql.mp4"));
-        files.add(new CourseSessionFile(counter.getAndIncrement(), 1L, null, "GraphQL Queries.mp4", "mp4", "/files/graphql_queries.mp4"));
-        files.add(new CourseSessionFile(counter.getAndIncrement(), 2L, null, "Advanced GraphQL.mp4", "mp4", "/files/advanced_graphql.mp4"));
-        files.add(new CourseSessionFile(counter.getAndIncrement(), 2L, null, "GraphQL Mutation Strategies.mp4", "mp4", "/files/graphql_mutation_strategies.mp4"));
+        files.add(new CourseSessionFile(counter.getAndIncrement(), 100L, null, "Introduction to GraphQL.mp4", "mp4", "/files/intro_to_graphql.mp4"));
+        files.add(new CourseSessionFile(counter.getAndIncrement(), 100L, null, "GraphQL Queries.mp4", "mp4", "/files/graphql_queries.mp4"));
+        files.add(new CourseSessionFile(counter.getAndIncrement(), 101L, null, "Advanced GraphQL.mp4", "mp4", "/files/advanced_graphql.mp4"));
+        files.add(new CourseSessionFile(counter.getAndIncrement(), 101L, null, "GraphQL Mutation Strategies.mp4", "mp4", "/files/graphql_mutation_strategies.mp4"));
     }
 
     public Optional<CourseSessionFile> findById(Long fileId) {

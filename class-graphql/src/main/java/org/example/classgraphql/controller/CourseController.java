@@ -35,7 +35,7 @@ public class CourseController {
     }
 
     @QueryMapping
-    public List<CourseSession> listCourseSessions(Long courseId) {
+    public List<CourseSession> listCourseSessions(@Argument Long courseId) {
         // throw new NotImplementedException();
         return courseService.findAllSessionsByCourseId(courseId);
     }

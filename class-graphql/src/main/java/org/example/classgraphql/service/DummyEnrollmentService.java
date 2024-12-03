@@ -33,12 +33,15 @@ public class DummyEnrollmentService {
         Long paymentId3 = paymentIdGenerator.getAndIncrement();
         Long paymentId4 = paymentIdGenerator.getAndIncrement();
 
-        payments.add(new Payment(paymentIdGenerator.getAndIncrement(), 100L, null, "COURSE", 100.00f, "Credit Card", LocalDateTime.now().minusDays(10).toString()));
-        payments.add(new Payment(paymentIdGenerator.getAndIncrement(), 100L, null, "SUBSCRIPTION", 120.00f, "PayPal", LocalDateTime.now().minusDays(15).toString()));
+        payments.add(new Payment(paymentId1, 100L, null, "COURSE", 100.00f, "Credit Card", LocalDateTime.now().minusDays(10).toString()));
+        payments.add(new Payment(paymentId2, 100L, null, "COURSE", 120.00f, "PayPal", LocalDateTime.now().minusDays(15).toString()));
+        payments.add(new Payment(paymentId3, 101L, null, "SUBSCRIPTION", 100.00f, "Credit Card", LocalDateTime.now().minusDays(10).toString()));
+        payments.add(new Payment(paymentId4, 102L, null, "SUBSCRIPTION", 120.00f, "PayPal", LocalDateTime.now().minusDays(15).toString()));
+
 
         // Initialize some dummy enrollments
         enrollments.add(new Enrollment(enrollmentIdGenerator.getAndIncrement(), 100L, null, 100L, null, paymentId1, null, LocalDateTime.now().minusDays(5).toString()));
-        enrollments.add(new Enrollment(enrollmentIdGenerator.getAndIncrement(), 100L, null, 200L, null, paymentId2, null, LocalDateTime.now().minusDays(3).toString()));
+        enrollments.add(new Enrollment(enrollmentIdGenerator.getAndIncrement(), 100L, null, 101L, null, paymentId2, null, LocalDateTime.now().minusDays(3).toString()));
 
         // Initialize some dummy subscriptions
         subscriptions.add(new PlanSubscription(subscriptionIdGenerator.getAndIncrement(), 101L, null, paymentId3, null, LocalDateTime.now().minusDays(300).toString(), LocalDateTime.now().plusDays(65).toString(), "Expired"));

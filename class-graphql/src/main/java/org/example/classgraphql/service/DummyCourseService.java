@@ -32,16 +32,16 @@ public class DummyCourseService {
         // Adding dummy sessions
         sessions.add(new CourseSession(sessionCounter.getAndIncrement(), 100L, "Session 1: Basics", new ArrayList<>()));
         sessions.add(new CourseSession(sessionCounter.getAndIncrement(), 100L, "Session 2: Queries", new ArrayList<>()));
-        sessions.add(new CourseSession(sessionCounter.getAndIncrement(), 100L, "Session 3: Performance", new ArrayList<>()));
+        sessions.add(new CourseSession(sessionCounter.getAndIncrement(), 101L, "Session 3: Performance", new ArrayList<>()));
 
         // Linking sessions to courses
         courses.get(0).getCourseSessions().add(sessions.get(0));
         courses.get(0).getCourseSessions().add(sessions.get(1));
-        courses.get(0).getCourseSessions().add(sessions.get(2));
+        courses.get(1).getCourseSessions().add(sessions.get(2));
 
         // Adding dummy ratings
-        ratings.add(new CourseRating(ratingCounter.getAndIncrement(), 100L, 201L, 5, "Excellent course"));
-        ratings.add(new CourseRating(ratingCounter.getAndIncrement(), 100L, 202L, 4, "Very informative."));
+        ratings.add(new CourseRating(ratingCounter.getAndIncrement(), 100L, 100L, 5, "Excellent course"));
+        ratings.add(new CourseRating(ratingCounter.getAndIncrement(), 101L, 101L, 4, "Very informative."));
 
         // Linking ratings to courses
         courses.get(0).getCourseRatings().add(ratings.get(0));
@@ -71,7 +71,7 @@ public class DummyCourseService {
 
     public List<CourseSession> findAllSessionsByCourseId(Long courseId) {
         return courses.stream()
-                .filter(courses -> courses.getId().equals(courseId))
+                .filter(course -> course.getId().equals(courseId))
                 .toList()
                 .get(0)
                 .getCourseSessions();

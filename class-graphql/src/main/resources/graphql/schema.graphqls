@@ -95,6 +95,7 @@ type CourseRating {
 
 type CourseSessionFile {
     fileId: ID!
+    courseSessionId: ID!
     fileName: String!
     fileType: String!
     filePath: String!
