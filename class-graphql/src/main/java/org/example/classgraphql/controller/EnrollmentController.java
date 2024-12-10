@@ -3,7 +3,8 @@ package org.example.classgraphql.controller;
 import org.example.classgraphql.model.Enrollment;
 import org.example.classgraphql.model.Payment;
 import org.example.classgraphql.model.PlanSubscription;
-import org.example.classgraphql.service.DummyEnrollmentService;
+import org.example.classgraphql.service.EnrollmentService;
+import org.example.classgraphql.service.dummy.DummyPlaybackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
@@ -15,10 +16,10 @@ import java.util.List;
 @Controller
 public class EnrollmentController {
 
-    private DummyEnrollmentService enrollmentService;
+    private EnrollmentService enrollmentService;
 
     @Autowired
-    public EnrollmentController(DummyEnrollmentService enrollmentService) {
+    public EnrollmentController(EnrollmentService enrollmentService) {
         this.enrollmentService = enrollmentService;
     }
 

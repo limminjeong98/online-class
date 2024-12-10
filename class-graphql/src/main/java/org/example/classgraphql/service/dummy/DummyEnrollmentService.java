@@ -1,4 +1,4 @@
-package org.example.classgraphql.service;
+package org.example.classgraphql.service.dummy;
 
 import org.example.classgraphql.model.Enrollment;
 import org.example.classgraphql.model.Payment;
