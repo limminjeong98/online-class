@@ -2,7 +2,7 @@ package org.example.classgraphql.controller;
 
 import org.example.classgraphql.model.EventLog;
 import org.example.classgraphql.model.PlaybackRecord;
-import org.example.classgraphql.service.DummyPlaybackService;
+import org.example.classgraphql.service.PlaybackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
@@ -11,10 +11,10 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class PlaybackController {
 
-    private DummyPlaybackService playbackService;
+    private PlaybackService playbackService;
 
     @Autowired
-    public PlaybackController(DummyPlaybackService playbackService) {
+    public PlaybackController(PlaybackService playbackService) {
         this.playbackService = playbackService;
     }
 

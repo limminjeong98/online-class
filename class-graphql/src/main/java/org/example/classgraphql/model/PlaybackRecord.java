@@ -1,8 +1,11 @@
 package org.example.classgraphql.model;
 
+import com.example.playbackservice.domain.service.PlaybackServiceOuterClass;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.Instant;
 
 @Data
 @NoArgsConstructor
@@ -13,4 +16,14 @@ public class PlaybackRecord {
     private Long fileId;
     private String startTime;
     private String endTime;
+
+    public static PlaybackRecord fromProto(PlaybackServiceOuterClass.PlaybackRecord proto) {
+        PlaybackRecord record = new PlaybackRecord();
+        record.setRecordId(proto.getRecordId());
+        record.setUserId(proto.getUserId());
+        record.setFileId(proto.getFileId());
+        record.setStartTime(Instant.ofEpochMilli(proto.getStartTime()).toString()); // Convert to ISO 8601
+        record.setEndTime(Instant.ofEpochMilli(proto.getEndTime()).toString());
+        return record;
+    }
 }
