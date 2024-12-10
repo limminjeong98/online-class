@@ -1,4 +1,4 @@
-package org.example.classgraphql.service;
+package org.example.classgraphql.service.dummy;
 
 import org.example.classgraphql.model.CourseSessionFile;
 import org.springframework.stereotype.Service;

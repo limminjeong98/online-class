@@ -2,7 +2,7 @@ package org.example.classgraphql.resolver;
 
 import org.example.classgraphql.model.CourseSession;
 import org.example.classgraphql.model.CourseSessionFile;
-import org.example.classgraphql.service.DummyFileService;
+import org.example.classgraphql.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
@@ -12,10 +12,10 @@ import java.util.List;
 @Controller
 public class CourseSessionDataResolver {
 
-    private final DummyFileService fileService;
+    private final FileService fileService;
 
     @Autowired
-    public CourseSessionDataResolver(DummyFileService fileService) {
+    public CourseSessionDataResolver(FileService fileService) {
         this.fileService = fileService;
     }
 
