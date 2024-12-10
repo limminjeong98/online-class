@@ -3,7 +3,7 @@ package org.example.classgraphql.resolver;
 import org.example.classgraphql.model.Course;
 import org.example.classgraphql.model.CourseSession;
 import org.example.classgraphql.model.User;
-import org.example.classgraphql.service.DummyCourseService;
+import org.example.classgraphql.service.CourseService;
 import org.example.classgraphql.service.DummyUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
@@ -15,10 +15,10 @@ import java.util.List;
 public class CourseDataResolver {
 
     private final DummyUserService userService;
-    private final DummyCourseService courseService;
+    private final CourseService courseService;
 
     @Autowired
-    public CourseDataResolver(DummyUserService userService, DummyCourseService courseService) {
+    public CourseDataResolver(DummyUserService userService, CourseService courseService) {
         this.userService = userService;
         this.courseService = courseService;
     }

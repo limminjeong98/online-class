@@ -3,7 +3,7 @@ package org.example.classgraphql.controller;
 import org.example.classgraphql.model.Course;
 import org.example.classgraphql.model.CourseRating;
 import org.example.classgraphql.model.CourseSession;
-import org.example.classgraphql.service.DummyCourseService;
+import org.example.classgraphql.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
@@ -15,10 +15,10 @@ import java.util.List;
 @Controller
 public class CourseController {
 
-    private DummyCourseService courseService;
+    private CourseService courseService;
 
     @Autowired
-    public CourseController(DummyCourseService courseService) {
+    public CourseController(CourseService courseService) {
         this.courseService = courseService;
     }
 

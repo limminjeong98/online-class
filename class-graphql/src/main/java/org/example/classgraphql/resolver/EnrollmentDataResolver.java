@@ -4,7 +4,7 @@ import org.example.classgraphql.model.Course;
 import org.example.classgraphql.model.Enrollment;
 import org.example.classgraphql.model.Payment;
 import org.example.classgraphql.model.User;
-import org.example.classgraphql.service.DummyCourseService;
+import org.example.classgraphql.service.CourseService;
 import org.example.classgraphql.service.DummyUserService;
 import org.example.classgraphql.service.EnrollmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +15,11 @@ import org.springframework.stereotype.Controller;
 public class EnrollmentDataResolver {
 
     private final DummyUserService userService;
-    private final DummyCourseService courseService;
+    private final CourseService courseService;
     private final EnrollmentService enrollmentService;
 
     @Autowired
-    public EnrollmentDataResolver(DummyUserService userService, DummyCourseService courseService, EnrollmentService enrollmentService) {
+    public EnrollmentDataResolver(DummyUserService userService, CourseService courseService, EnrollmentService enrollmentService) {
         this.userService = userService;
         this.courseService = courseService;
         this.enrollmentService = enrollmentService;
