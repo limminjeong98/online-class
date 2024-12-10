@@ -2,7 +2,6 @@ package org.example.classgraphql.service;
 
 import org.example.classgraphql.model.CourseSessionFile;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -18,7 +17,7 @@ public class FileService {
     private final RestTemplate restTemplate;
 
     @Autowired
-    public FileService(@LoadBalanced RestTemplate restTemplate) {
+    public FileService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 

@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.classgraphql.model.User;
 import org.example.classgraphql.service.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -20,7 +19,7 @@ public class UserService {
     private static final String BASE_URL = "http://user-service/users";
 
     @Autowired
-    public UserService(@LoadBalanced RestTemplate restTemplate) {
+    public UserService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
