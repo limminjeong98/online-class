@@ -1,5 +1,6 @@
 package org.example.classgraphql.controller;
 
+import org.example.classgraphql.exception.CourseNotFoundException;
 import org.example.classgraphql.model.Course;
 import org.example.classgraphql.model.CourseRating;
 import org.example.classgraphql.model.CourseSession;
@@ -15,7 +16,7 @@ import java.util.List;
 @Controller
 public class CourseController {
 
-    private CourseService courseService;
+    private final CourseService courseService;
 
     @Autowired
     public CourseController(CourseService courseService) {
@@ -30,8 +31,7 @@ public class CourseController {
 
     @QueryMapping
     public Course getCourse(@Argument Long userId, @Argument Long courseId) {
-        // throw new NotImplementedException();
-        return courseService.findCourseById(courseId).orElseThrow(() -> new RuntimeException("Course Not Found"));
+        return courseService.findCourseById(courseId).orElseThrow(() -> new CourseNotFoundException("Course Not Found"));
     }
 
     @QueryMapping
