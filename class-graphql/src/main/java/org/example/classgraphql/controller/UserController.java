@@ -1,7 +1,7 @@
 package org.example.classgraphql.controller;
 
 import org.example.classgraphql.model.User;
-import org.example.classgraphql.service.DummyUserService;
+import org.example.classgraphql.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
@@ -11,10 +11,10 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class UserController {
 
-    private DummyUserService userService;
+    private UserService userService;
 
     @Autowired
-    public UserController(DummyUserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 

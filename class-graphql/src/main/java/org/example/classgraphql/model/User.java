@@ -12,4 +12,10 @@ public class User {
     private String name;
     private String email;
     private String passwordHash;
+
+    public User(Long userId, String name, String email) {
+        this.id = userId;
+        this.name = name;
+        this.email = email;
+    }
 }
