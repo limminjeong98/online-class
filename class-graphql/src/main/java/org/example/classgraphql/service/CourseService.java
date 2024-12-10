@@ -98,6 +98,22 @@ public class CourseService {
                 .collect(Collectors.toList());
     }
 
+    public Optional<CourseSession> findSessionById(Long courseId, Long sessionId) {
+        String url = UriComponentsBuilder.fromUriString(BASE_URL + "/{courseId}/sessions/{sessionId}")
+                .buildAndExpand(courseId, sessionId)
+                .toUriString();
+
+        try {
+            CourseSession retrievedSession = restTemplate.getForObject(url, CourseSession.class);
+            if (retrievedSession != null) {
+                retrievedSession.setCourseId(courseId);
+            }
+            return Optional.ofNullable(retrievedSession);
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+    }
+
     public CourseRating addRatingToCourse(Long userId, Long courseId, Integer rating, String comment) {
         CourseRating courseRating = new CourseRating();
         courseRating.setUserId(userId);
