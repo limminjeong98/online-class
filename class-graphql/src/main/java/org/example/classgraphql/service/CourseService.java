@@ -5,6 +5,7 @@ import org.example.classgraphql.model.Course;
 import org.example.classgraphql.model.CourseRating;
 import org.example.classgraphql.model.CourseSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -45,6 +46,7 @@ public class CourseService {
         return course;
     }
 
+    @Cacheable(value = "course", key = "#courseId")
     public Optional<Course> findCourseById(Long courseId) {
         Course course = null;
 
@@ -124,6 +126,7 @@ public class CourseService {
         return restTemplate.postForObject(url, courseRating, CourseRating.class);
     }
 
+    @Cacheable(value = "course", key = "#courseIds")
     public List<Course> findCourseByIds(List<Long> courseIds) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(BASE_URL);
         courseIds.forEach(id -> builder.queryParam("courseId", id));

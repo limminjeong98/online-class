@@ -7,6 +7,7 @@ import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.example.classgraphql.model.Enrollment;
 import org.example.classgraphql.model.Payment;
 import org.example.classgraphql.model.PlanSubscription;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -108,6 +109,7 @@ public class EnrollmentService {
         return response.getHasAccess();
     }
 
+    @Cacheable(value = "payment", key = "#paymentId")
     public Payment findPaymentById(Long paymentId) {
         EnrollmentServiceOuterClass.PaymentsByIdRequest request = EnrollmentServiceOuterClass.PaymentsByIdRequest.newBuilder()
                 .setPaymentId(paymentId)

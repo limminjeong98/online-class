@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CourseSessionFile {
+public class CourseSessionFile implements Serializable {
     private Long fileId;
     private Long courseSessionId;
     private CourseSession courseSession;
