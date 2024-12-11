@@ -9,10 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.net.URI;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -124,5 +122,17 @@ public class CourseService {
                 .buildAndExpand(courseId).toUriString();
 
         return restTemplate.postForObject(url, courseRating, CourseRating.class);
+    }
+
+    public List<Course> findCourseByIds(List<Long> courseIds) {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(BASE_URL);
+        courseIds.forEach(id -> builder.queryParam("courseId", id));
+        URI uri = builder.build().toUri();
+        log.info("### findCourseByIds URI ###{}", uri.toString());
+        Course[] courses = restTemplate.getForObject(uri, Course[].class);
+        if (courses == null) {
+            return Collections.emptyList();
+        }
+        return Arrays.asList(courses);
     }
 }
