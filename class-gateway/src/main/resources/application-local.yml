@@ -9,18 +9,24 @@ spring:
           predicates:
             - Path=/auth/**
             - Method=POST,GET
+
         - id: file_route
           uri: lb://file-management-service
           predicates:
             - Path=/files/**
             - Method=POST,GET
           filters:
+            - AuthenticationFilter
             - RewritePath=/files/(?<segment>.*),/%\{segment}
+
         - id: graphql_route
           uri: lb://class-graphql
           predicates:
             - Path=/graphql
             - Method=POST,GET
+          filters:
+            - AuthenticationFilter
+
       global-cors:
         cors-configurations:
           '[/**]':

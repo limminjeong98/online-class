@@ -5,6 +5,7 @@ import com.example.userservice.domain.user.dto.TokenRequest;
 import com.example.userservice.domain.user.entity.User;
 import com.example.userservice.domain.user.service.JWTService;
 import com.example.userservice.domain.user.service.UserService;
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,5 +47,12 @@ public class AuthController {
     public ResponseEntity<Map<String, String>> refreshToken(HttpServletRequest request, @RequestBody TokenRequest tokenRequest) {
         String refreshToken = jwtService.refreshToken(tokenRequest.getToken());
         return ResponseEntity.ok(Collections.singletonMap("token", refreshToken));
+    }
+
+    @PostMapping("/validate")
+    public ResponseEntity<User> validateToken(@RequestBody TokenRequest tokenRequest) {
+        Claims claims = jwtService.parseJwtClaims(tokenRequest.getToken());
+        User user = userService.getUserByEmail(claims.getSubject()).orElseThrow();
+        return ResponseEntity.ok(user);
     }
 }
